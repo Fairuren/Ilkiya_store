@@ -35,13 +35,13 @@ class Book extends Model
 
     
     public static function getAllBooksReport($start, $end){
-        return Book::whereBetween('created_at', [$start, $end])->get();
+        return Book::whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
     public static function getAllSoldReport($start, $end){
-        return Cart::whereBetween('created_at', [$start, $end])->get();
+        return Cart::whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
     public static function getAllDiscount($start, $end){
-        return Book::where('discount', '>', 0)->whereBetween('created_at', [$start, $end])->get();
+        return Book::where('discount', '>', 0)->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
    
     

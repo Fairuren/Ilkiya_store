@@ -125,7 +125,7 @@ class OrderController extends Controller
         $this->validate($request,[
             'cancel_reason'=>'string|required'
         ]);
-    
+        
         $order_data=$request->all();
         $order_data['cancel_reason'] = $request->cancel_reason;
         $order_data['status'] = 'cancelled';
@@ -185,6 +185,8 @@ class OrderController extends Controller
         ]);
         $data=$request->all();
         // return $request->status;
+        
+        $order['cancel_reason'] = "Stok Habis";
         if($request->status=='delivered'){
             foreach($order->cart as $cart){
                 $product=$cart->book;
@@ -193,6 +195,9 @@ class OrderController extends Controller
                 $product->save();
             }
         }
+
+
+
         $status=$order->fill($data)->save();
         if($status){
             request()->session()->flash('success','Successfully updated order');
@@ -238,6 +243,7 @@ class OrderController extends Controller
             $data[$monthName] = (!empty($result[$i]))? number_format((float)($result[$i]), 2, '.', '') : 0.0;
         }
         
+        
         return $data;
 
     }
@@ -256,7 +262,7 @@ class OrderController extends Controller
     
 
         return $response->json();
-    }
+}
     public function pdf(User $user, Request $request)
     {
         $order=Order::getOrder($request->id);
@@ -313,6 +319,16 @@ class OrderController extends Controller
        
         $pdf=PDF::loadview('client.layout.print.chart',compact('data'));
         return $pdf->stream('chart.pdf');
+
+    }
+
+    public function orderDetailPDF($id)
+    {
+        $order=Order::getOrderPDF($id);
+        return view('client.layout.print.detail_order_PDF')->with('order',$order);
+        // return $order;
+        // $pdf=PDF::loadview('client.layout.print.detail_order_PDF',compact('order'));
+        // return $pdf->stream('detail_order_PDF.pdf');
 
     }
 

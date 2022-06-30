@@ -162,6 +162,7 @@ Route::group(['prefix'=>'/admin', 'middleware' => ['auth', 'su-admin']], functio
     Route::post('alldiscount/pdf',[ProductController::class, 'all_discount_pdf'])->name('discount.pdf');
     Route::post('allusers/pdf',[UserController::class, 'all_users_pdf'])->name('allusers.pdf');
     Route::post('chart_income/pdf',[OrderController::class, 'chart_income_pdf'])->name('chart_income.pdf');
+    Route::get('order_detail/pdf/{id}',[OrderController::class, 'orderDetailPDF'])->name('get_order_detail.pdf');
     
 });
 

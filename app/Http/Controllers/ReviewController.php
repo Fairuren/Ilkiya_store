@@ -48,6 +48,7 @@ class ReviewController extends Controller
         //  return $product_info;
         // return $request->all();
         $data=$request->all();
+        $data['name'] = $request->user()->name;
         $data['book_id']=$product_info->id;
         $data['user_id']=$request->user()->id;
         $data['status']='active';

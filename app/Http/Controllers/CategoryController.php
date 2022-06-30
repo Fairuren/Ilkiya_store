@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -132,7 +131,7 @@ class CategoryController extends Controller
         $book = $category->books;
 
         if(count($book)>0){
-            request()->session()->flash('error','Category cannot be deleted as it has books');
+            request()->session()->flash('error','Kategori tidak bisa di hapus dikarenakan buku sudah terdaftar');
             return redirect()->route('category.index');
         }
         

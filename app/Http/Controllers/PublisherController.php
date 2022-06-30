@@ -125,7 +125,7 @@ class PublisherController extends Controller
         $book = $publisher->books;
 
         if(count($book)>0){
-            request()->session()->flash('error','Category cannot be deleted as it has books');
+            request()->session()->flash('error','kategori buku tidak bisa dihapus dikarenakan sudah ada buku yang terdaftar');
             return redirect()->route('publisher.index');
         }
         

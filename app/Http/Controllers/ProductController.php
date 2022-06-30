@@ -53,7 +53,7 @@ class ProductController extends Controller
             'name' => 'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'image'=>'image|file|max:2048',
+            'image'=>'image|file|max:2048|required',
             'stock'=>"required|numeric",
             'category_id'=>'required|exists:category,id',
             'publisher_id'=>'required|exists:publishers,id',
@@ -70,8 +70,7 @@ class ProductController extends Controller
             $request->file('image')->store('images');
             $book['image'] = $request->file('image')->hashName();    
         }
-        
-      
+     
         $slug = Str::slug($request->name);
         
         //make sure slug unique in database and if exist add a number to the end of slug

@@ -26,12 +26,16 @@ class Order extends Model
     }
 
     public static function getAllOrder($start, $end){
-        return Order::where('status' , '!=', "cancelled")->whereBetween('created_at', [$start, $end])->get();
+        return Order::where('status' , '!=', "cancelled")->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
     public static function getAllOrderCanceled($start, $end){
-        return Order::where('status', '=', 'cancelled')->whereBetween('created_at', [$start, $end])->get();
+        return Order::where('status', '=', 'cancelled')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
     public static function getOrder($id){
+        return Order::find($id);
+    }
+
+    public static function getOrderPDF($id){
         return Order::find($id);
     }
 
@@ -44,7 +48,7 @@ class Order extends Model
     }
 
     public static function totalIncome(){
-        $data = Order::where('payment_status', 'paid')->where('status','delivered')->sum('total_amount');
+        $data = Order::where('status','delivered')->sum('sub_total');
         if($data){
             return $data;
         }
@@ -52,7 +56,7 @@ class Order extends Model
     }
 
     public static function totalIncomeToday(){
-        $data = Order::whereDate('created_at', date('Y-m-d'))->where('status','delivered')->sum('sub_total');
+        $data = Order::whereDay('created_at',date('d'))->where('status','delivered')->sum('sub_total');
         if($data){
             return $data;
         }
