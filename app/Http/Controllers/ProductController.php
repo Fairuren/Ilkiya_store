@@ -152,8 +152,15 @@ class ProductController extends Controller
 
         $data = $request->all();
         //store image 
+
+        // if($request->file('image')){
+        //     $request->file('image')->store('images');
+        //     $book['image'] = $request->file('image')->hashName();    
+        // }
+       
         if($request->file('image')){
-            $data['image'] = $request->file('image')->store('images');    
+            $request->file('image')->store('images');    
+            $book['image'] = $request->file('image')->hashName();    
         }
         $data['image'] = $book['image'];
     
