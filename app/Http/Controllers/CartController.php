@@ -130,7 +130,7 @@ class CartController extends Controller
             // return $cart;
             $cart->save();
         }
-        request()->session()->flash('success','Book successfully added to cart.');
+        request()->session()->flash('success','Buku Telah Ditambahkan Kedalam Keranjang.');
         return back();       
     } 
 

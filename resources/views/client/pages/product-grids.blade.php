@@ -56,7 +56,7 @@
                             <!--/ End Shop By Price -->
                             <!-- Single Widget -->
                             <div class="single-widget recent-post">
-                                <h3 class="title">Recent post</h3>
+                                <h3 class="title">Barang Terbaru</h3>
                                 {{-- {{dd($recent_products)}} --}}
                                 @foreach ($recent_products as $product)
                                     <!-- Single Post -->
@@ -76,9 +76,13 @@
                                             @php
                                                 $org = $product->price - ($product->price * $product->discount) / 100;
                                             @endphp
-                                            <p class="price"><del class="text-muted">Rp.
-                                                    {{ number_format($product->price, 2) }}</del> Rp.
-                                                {{ number_format($org, 2) }} </p>
+                                            <p class="price">
+                                                @if ($product->discount > 0)
+                                                    <del class="text-muted">Rp.
+                                                        {{ number_format($product->price, 2) }}</del>
+                                                @endif
+                                                Rp. {{ number_format($org, 2) }}
+                                            </p>
 
                                         </div>
                                     </div>
@@ -147,7 +151,7 @@
                                                         style="min-height : 200px ; max-height : 50px; "
                                                         src="{{ asset('/storage/images/' . $photo[0]) }}"
                                                         alt="{{ $photo[0] }}">
-                                                    <img class="hover-img"
+                                                    <img class="hover-img" style="min-height : 200px ; max-height : 50px; "
                                                         src="{{ asset('/storage/images/' . $photo[0]) }}"
                                                         alt="{{ $photo[0] }}">
                                                     @if ($product->discount)
@@ -176,8 +180,11 @@
                                                     $after_discount = $product->price - ($product->price * $product->discount) / 100;
                                                 @endphp
                                                 <span>Rp. {{ number_format($after_discount, 2) }}</span>
-                                                <del style="padding-left:4%;">Rp.
-                                                    {{ number_format($product->price, 2) }}</del>
+                                                @if ($product->discount > 0)
+                                                    <del style="padding-left:4%;">Rp.
+                                                        {{ number_format($product->price, 2) }}</del>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>

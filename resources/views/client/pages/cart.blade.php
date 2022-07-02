@@ -138,8 +138,8 @@
                             <div class="col-lg-4 col-md-7 col-12">
                                 <div class="right">
                                     <ul>
-                                        <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">Cart
-                                            Subtotal<span>Rp. {{ number_format(Helper::totalCartPrice(), 2) }}</span>
+                                        <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">
+                                            Harga<span>Rp. {{ number_format(Helper::totalCartPrice(), 2) }}</span>
                                         </li>
 
                                         @if (session()->has('coupon'))

@@ -7,7 +7,7 @@
   -->
 
     <div class="logo">
-        <a href="https://creative-tim.com/" class="simple-text logo-normal">
+        <a href="/admin" class="simple-text logo-normal">
             {{-- ADMIN ILKIYA --}}
             {{ Auth::user()->role == 'su' ? 'Pemilik' : 'Admin' }}
         </a>

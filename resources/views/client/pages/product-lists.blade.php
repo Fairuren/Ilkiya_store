@@ -33,7 +33,7 @@
                             <!--/ End Shop By Price -->
                             <!-- Single Widget -->
                             <div class="single-widget recent-post">
-                                <h3 class="title">Recent post</h3>
+                                <h3 class="title">Buku Terbaru</h3>
                                 {{-- {{dd($recent_products)}} --}}
                                 @foreach ($recent_products as $product)
                                     <!-- Single Post -->
@@ -52,9 +52,13 @@
                                             @php
                                                 $org = $product->price - ($product->price * $product->discount) / 100;
                                             @endphp
-                                            <p class="price"><del
-                                                    class="text-muted">${{ number_format($product->price, 2) }}</del>
-                                                ${{ number_format($org, 2) }} </p>
+                                            <p class="price">
+                                                @if ($product->discount > 0)
+                                                    <del class="text-muted">Rp.
+                                                        {{ number_format($product->price, 2) }}</del>
+                                                @endif
+                                                Rp. {{ number_format($org, 2) }}
+                                            </p>
                                         </div>
                                     </div>
                                     <!-- End Single Post -->
@@ -151,12 +155,15 @@
                                             <div class="col-lg-8 col-md-6 col-12">
                                                 <div class="list-content">
                                                     <div class="product-content">
-                                                        <div class="product-price">
+                                                        <div class="product-price d-flex">
                                                             @php
                                                                 $after_discount = $product->price - ($product->price * $product->discount) / 100;
                                                             @endphp
-                                                            <span>${{ number_format($after_discount, 2) }}</span>
-                                                            <del>${{ number_format($product->price, 2) }}</del>
+                                                            <span>Rp. {{ number_format($after_discount, 2) }}</span>
+                                                            @if ($product->discount > 0)
+                                                                <del
+                                                                    style="padding-left:4%;">Rp.{{ number_format($product->price, 2) }}</del>
+                                                            @endif
                                                         </div>
                                                         <h3 class="title"><a
                                                                 href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
@@ -164,8 +171,9 @@
                                                         {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
                                                     </div>
                                                     <p class="des pt-2">{!! html_entity_decode($product->summary) !!}</p>
-                                                    <a href="javascript:void(0)" class="btn cart"
-                                                        data-id="{{ $product->id }}">Buy Now!</a>
+                                                    <a href="{{ route('add-to-cart', $product->slug) }}" class="btn cart"
+                                                        data-id="{{ $product->id }}">Tambah Ke
+                                                        Keranjang!</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -259,9 +267,16 @@
                                         @php
                                             $after_discount = $product->price - ($product->price * $product->discount) / 100;
                                         @endphp
-                                        <h3><small><del
-                                                    class="text-muted">${{ number_format($product->price, 2) }}</del></small>
-                                            ${{ number_format($after_discount, 2) }} </h3>
+                                        <h3>
+                                            <small>
+                                                @if ($product->discount > 0)
+                                                    <del
+                                                        class="text-muted">${{ number_format($product->price, 2) }}</del>
+                                                @endif
+                                            </small>
+
+                                            ${{ number_format($after_discount, 2) }}
+                                        </h3>
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>

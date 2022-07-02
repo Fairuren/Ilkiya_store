@@ -82,6 +82,8 @@ Route::get('/checkout', function(){
 
 Route::post('cart/order',[OrderController::class, 'store'])->name('cart.order');
 Route::get('order/pdf/{id}',[OrderController::class, 'pdf'])->name('order.pdf');
+Route::delete('orderdelete/{id}',[OrderController::class, 'deleteorderuser'])->name('orderuser.destroy');
+
 
 // Route::get('/income',[OrderController::class, 'incomeChart'])->name('product.order.income');
 Route::get('/cart',function(){

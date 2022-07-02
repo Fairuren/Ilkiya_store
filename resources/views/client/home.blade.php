@@ -71,8 +71,8 @@
 
                                                     <div class="product-action-2">
                                                         <a title="Add to cart"
-                                                            href="{{ route('add-to-cart', $product->slug) }}">Add to
-                                                            cart</a>
+                                                            href="{{ route('add-to-cart', $product->slug) }}">Tambah Ke
+                                                            Keranjang</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -217,7 +217,7 @@
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
         <script>
             /*==================================================================
-                                                                                                                                                                                                                                        [ Isotope ]*/
+                                                                                                                                                                                                                                                [ Isotope ]*/
             var $topeContainer = $('.isotope-grid');
             var $filter = $('.filter-tope-group');
             console.log($filter, $topeContainer);

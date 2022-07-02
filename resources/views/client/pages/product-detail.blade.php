@@ -186,11 +186,10 @@
                                                     <!-- Review -->
                                                     <div class="comment-review">
                                                         <div class="add-review">
-                                                            <h5>Add A Review</h5>
-                                                            <p>Your email address will not be published. Required fields are
-                                                                marked</p>
+                                                            <h5>Tambahkan Ulasan</h5>
+                                                            <p></p>
                                                         </div>
-                                                        <h4>Your Rating <span class="text-danger">*</span></h4>
+                                                        <h4>Rating <span class="text-danger">*</span></h4>
                                                         <div class="review-inner">
                                                             <!-- Form -->
                                                             @auth
@@ -247,7 +246,7 @@
                                                                         </div>
                                                                         <div class="col-lg-12 col-12">
                                                                             <div class="form-group">
-                                                                                <label>Write a review</label>
+                                                                                <label>Ulasan </label>
                                                                                 <textarea name="review" rows="6" placeholder=""></textarea>
                                                                             </div>
                                                                         </div>

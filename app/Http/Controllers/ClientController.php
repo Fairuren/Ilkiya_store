@@ -114,7 +114,7 @@ class ClientController extends Controller
         $data= $request->all();
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
             Session::put('user',$data['email']);
-            request()->session()->flash('success','Successfully login');
+            request()->session()->flash('success','login Berhasil');
             return redirect()->route('home');
         }
         else{
@@ -126,7 +126,7 @@ class ClientController extends Controller
     public function logout(){
         Session::forget('user');
         Auth::logout();
-        request()->session()->flash('success','Logout successfully');
+        request()->session()->flash('success','Berhasil Logout');
         return redirect()->route('home');
     }
 

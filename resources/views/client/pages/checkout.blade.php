@@ -38,8 +38,9 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Nama Depan<span>*</span></label>
-                                        <input type="text" name="first_name" placeholder=""
-                                            value="{{ old('first_name') }}" value="{{ old('first_name') }}">
+                                        <input style="border : 1px solid black;" type="text" name="first_name"
+                                            placeholder="Isi Nama Depan" value="{{ old('first_name') }}"
+                                            value="{{ old('first_name') }}">
                                         @error('first_name')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -48,8 +49,8 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Nama Belakang<span>*</span></label>
-                                        <input type="text" name="last_name" placeholder=""
-                                            value="{{ old('lat_name') }}">
+                                        <input style="border : 1px solid black;" type="text" name="last_name"
+                                            placeholder="Isi Nama Depan" value="{{ old('lat_name') }}">
                                         @error('last_name')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -58,7 +59,8 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Alamat Email<span>*</span></label>
-                                        <input type="email" name="email" placeholder="" value="{{ old('email') }}">
+                                        <input style="border : 1px solid black;" type="email" name="email"
+                                            placeholder="Isi Email Anda" value="{{ old('email') }}">
                                         @error('email')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -67,8 +69,8 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Nomor Telepon <span>*</span></label>
-                                        <input type="number" name="phone" placeholder="" required
-                                            value="{{ old('phone') }}">
+                                        <input style="border : 1px solid black;" type="number" name="phone"
+                                            placeholder="ISi Nomor Telepon Anda" required value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -77,8 +79,9 @@
 
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
-                                        <label>Alamat<span>*</span></label>
-                                        <input type="text" name="address" placeholder="" value="{{ old('address') }}">
+                                        <label>Alamat Rumah<span>*</span></label>
+                                        <input style="border : 1px solid black;" type="text" name="address"
+                                            placeholder="Isi Alamat Anda" value="{{ old('address') }}">
                                         @error('address')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -88,8 +91,8 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Kode Pos</label>
-                                        <input type="text" name="post_code" placeholder=""
-                                            value="{{ old('post_code') }}">
+                                        <input style="border : 1px solid black;" type="text" name="post_code"
+                                            placeholder="Isi Kode Pos" value="{{ old('post_code') }}">
                                         @error('post_code')
                                             <span class='text-danger'>{{ $message }}</span>
                                         @enderror
@@ -107,8 +110,8 @@
                                 <h2>TOTAL </h2>
                                 <div class="content">
                                     <ul>
-                                        <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">Cart
-                                            Subtotal<span>Rp. <span
+                                        <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">
+                                            Harga<span>Rp. <span
                                                     id="order_subtotal">{{ number_format(Helper::totalCartPrice(), 2) }}</span></span>
                                         </li>
                                         <li> Total Barang<span id="total_item">{{ Helper::cartCount() }}</span></li>
@@ -117,7 +120,8 @@
 
                                             @if ($kota->json())
                                                 <select id="shipping" name="shipping" class="nice-select">
-                                                    <option value="">Pilih Kota</option>
+                                                    <option style="margin-right : 10px;" value="">Silahkan Pilih Kota
+                                                        anda</option>
                                                     @foreach ($kota->json()['rajaongkir']['results'] as $shipping)
                                                         <option value="{{ $shipping['city_id'] }}">
                                                             {{ $shipping['city_name'] }}</option>
@@ -127,12 +131,16 @@
                                             @else
                                                 <span></span>
                                             @endif
+
                                         </li>
                                         <li>Ongkir Rp. <span name="ongkir" id="ongkir">0</span></li>
                                         <input type="hidden" name="ongkir" id="ongkir_value" value="0">
                                         <input type="hidden" name="city" id="city" value="">
                                         <li>Total<span>Rp. <span name="total" id="total"></span></span></li>
+                                        <li>
 
+                                            <p style="padding : 0px; margin : 0px;">* Pengiriman Menggunakan JNE</p>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

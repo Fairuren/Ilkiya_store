@@ -105,7 +105,7 @@ class OrderController extends Controller
         
 
         // dd($users);        
-        request()->session()->flash('success','Your product successfully placed in order');
+        request()->session()->flash('success','Produkmu Sudah Masuk Kedalam Antrian Pembelian');
         return redirect()->route('home');
     }
 
@@ -216,7 +216,30 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order=Order::findOrFail($id);
+        $status=$order->delete();
+        
+        if($status){
+            request()->session()->flash('success','Product successfully deleted');
+        }
+        else{
+            request()->session()->flash('error','Error while deleting order');
+        }
+        return redirect()->route('order.index');
+    }
+
+    public function deleteorderuser($id){
+        $order=Order::findOrFail($id);
+        $status=$order->delete();
+        
+        if($status){
+            request()->session()->flash('success','Product successfully deleted');
+        }
+        else{
+            request()->session()->flash('error','Error while deleting order');
+        }
+        return redirect()->route('user.order.index');
+     
     }
 
     public function incomeChart(Request $request){
