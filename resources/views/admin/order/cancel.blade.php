@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Cancel_Order')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Dibatalkan')])
 
 @section('content')
     <!-- DataTales Example -->
@@ -34,8 +34,8 @@
                                     <th>Email</th>
                                     <th>Jumlah</th>
                                     <th>Alasan Pembatalan</th>
-                                    <th>Total Amount</th>
                                     <th>Tanggal</th>
+                                    <th>Total Amount</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -46,8 +46,8 @@
                                     <th>Email</th>
                                     <th>Jumlah</th>
                                     <th>Alasan Pembatalan</th>
-                                    <th>Total Amount</th>
                                     <th>Tanggal</th>
+                                    <th>Total Amount</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -65,10 +65,10 @@
                                         <td>{{ $order->quantity }}</td>
                                         <td class="text-center">{{ $order->cancel_reason ? $order->cancel_reason : '-' }}
                                         </td>
-                                        <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
                                         <td>
                                             {{ $order->updated_at }}
                                         </td>
+                                        <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
 
                                     </tr>
                                 @endforeach

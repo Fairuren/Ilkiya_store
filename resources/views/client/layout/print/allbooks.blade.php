@@ -23,11 +23,11 @@
                         <th >No</th>
                         <th >Judul Buku</th>
                         <th >Kategori</th>
+                        <th >Stok</th>
                         <th >Penulis</th>
                         <th >Penerbit</th>
                         <th >Harga Satuan</th>
                         <th >Total</th>
-                        <th >Stok</th>
           
                     </tr>
                 </thead>
@@ -37,12 +37,12 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$book->name}}</td>
                         <td>{{$book->category['name']}}</td>
+                        <td>{{$book->stock}}</td>
                         <td >{{$book->writer['name']}}</td>
                         <td >{{$book->publisher['name']}}</td>
                  
                         <td >{{number_format($book->price,2)}}</td>
                         <td >{{number_format($book->price * $book->stock,2)}}</td>
-                        <td>{{$book->stock}}</td>
                       
                     </tr>
                     @endforeach

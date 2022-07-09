@@ -6,7 +6,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Buku</h6>
+                <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Buku Diskon</h6>
 
                 <div class="d-flex float-right">
                     <form style="width: 28rem; display : flex; justify-content : center ; align-items : center;"
@@ -34,10 +34,10 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Judul Buku</th>
+                                    <th>Stok</th>
+                                    <th>Diskon</th>
                                     <th>Harga Sebelum Diskon</th>
                                     <th>Harga Setelah Diskon</th>
-                                    <th>Diskon</th>
-                                    <th>Stok</th>
                                     {{-- <th>Foto</th> --}}
                                     <th>Aksi</th>
                                 </tr>
@@ -46,10 +46,10 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Judul Buku</th>
-                                    <th>Harga Sebelum Diskon</th>
-                                    <th>Harga Setelah Diskon</th>
                                     <th>Diskon</th>
                                     <th>Stok</th>
+                                    <th>Harga Sebelum Diskon</th>
+                                    <th>Harga Setelah Diskon</th>
                                     {{-- <th>Foto</th> --}}
                                     <th>Aksi</th>
                                 </tr>
@@ -67,17 +67,18 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>Rp. {{ number_format($product->price, 2) }} </td>
-                                        <td>Rp.
-                                            {{ number_format($product->price - ($product->discount * $product->price) / 100) }}
-                                        </td>
-                                        <td>{{ $product->discount }} %</td>
                                         <td>
                                             @if ($product->stock > 0)
                                                 <span class="badge badge-primary">{{ $product->stock }}</span>
                                             @else
                                                 <span class="badge badge-danger">{{ $product->stock }}</span>
                                             @endif
+                                        </td>
+
+                                        <td>{{ $product->discount }} %</td>
+                                        <td>Rp. {{ number_format($product->price, 2) }} </td>
+                                        <td>Rp.
+                                            {{ number_format($product->price - ($product->discount * $product->price) / 100) }}
                                         </td>
                                         <td>
                                             {{-- <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm" style="height:30px; width:20px;" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="material-icons">edit</i></a> --}}

@@ -31,8 +31,8 @@
                         <th>Email</th>
                         <th>Jumlah</th>
                         <th>Alasan Pembatalan</th>
-                        <th>Total Amount</th>
                         <th>Tanggal</th>
+                        <th>Total Harga</th>
 
                     </tr>
                 </thead>
@@ -41,12 +41,12 @@
                         <tr style="font-size: 12px;">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $order->order_number }}</td>
-                            <td>{{ $order->first_name,  $order->last_name }}</td>
+                            <td>{{ $order->first_name, $order->last_name }}</td>
                             <td>{{ $order->email }}</td>
                             <td>{{ $order->quantity }}</td>
                             <td class="text-center">{{ $order->cancel_reason ? $order->cancel_reason : '-' }}</td>
-                            <td>{{ number_format($order->total_amount + $order->ongkir, 2) }}</td>
                             <td>{{ $order->updated_at }}</td>
+                            <td>{{ number_format($order->total_amount + $order->ongkir, 2) }}</td>
 
                         </tr>
                     @endforeach
