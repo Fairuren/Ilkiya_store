@@ -11,11 +11,11 @@
                     class="float-right" method="post" action="{{ route('allorder.pdf') }}">
                     {{ csrf_field() }}
                     <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
-                    <input
+                    <input required
                         style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(226, 226, 226) border-radius : 10px;"
                         type="date" name="start" />
                     <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">-</label>
-                    <input
+                    <input required
                         style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(179, 179, 179) border-radius : 10px;"
                         type="date" name="end" />
                     <button type="submit" class="btn btn-primary btn-sm float-right"><i class="material-icons">download</i>
@@ -32,9 +32,9 @@
                                     <th>Order No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Quantity</th>
-                                    <th>Shipping Charge</th>
-                                    <th>Total Amount</th>
+                                    <th>Jumlah</th>
+                                    <th>Ongkir</th>
+                                    <th>Total Harga</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -45,9 +45,9 @@
                                     <th>Order No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Quantity</th>
-                                    <th>Shipping Charge</th>
-                                    <th>Total Amount</th>
+                                    <th>Jumlah</th>
+                                    <th>Ongkir</th>
+                                    <th>Total Harga</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

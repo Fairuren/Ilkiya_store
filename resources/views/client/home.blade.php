@@ -15,34 +15,14 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="product-info">
-                        <div class="nav-main">
-                            <!-- Tab Nav -->
-                            <ul class="nav nav-tabs filter-tope-group" id="myTab" role="tablist">
-                                @php
-                                    $categories = DB::table('category')->get();
-                                    // dd($categories);
-                                @endphp
-                                @if ($categories)
-                                    <button class="btn" style="background:black"data-filter="*">
-                                        Semua Genre
-                                    </button>
-                                    @foreach ($categories as $key => $cat)
-                                        <button class="btn" style="background:none;color:black;"
-                                            data-filter=".{{ $cat->id }}">
-                                            {{ $cat->name }}
-                                        </button>
-                                    @endforeach
-                                @endif
-                            </ul>
-                            <!--/ End Tab Nav -->
-                        </div>
-                        <div class="tab-content d-flex flex-wrap isotope-grid" id="myTabContent">
+                    <div style="display: flex; flex-direction : row;" class="product-info">
+                        <div style="width: 100rem;" class="tab-content d-flex flex-wrap isotope-grid" id="myTabContent">
                             <!-- Start Single Tab -->
                             @if ($product_lists)
+
                                 @foreach ($product_lists as $key => $product)
                                     <div
-                                        class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product->category_id }}">
+                                        class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item {{ $product->category_id }}">
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{ route('product-detail', $product->slug) }}">
@@ -98,6 +78,33 @@
 
                             <!--/ End Single Tab -->
 
+                        </div>
+                        <div style="width: 25rem; margin-top :50px;" class="nav-main">
+                            <!-- Tab Nav -->
+                            <ul style="display: flex;  flex-direction : column;" class="nav nav-tabs filter-tope-group"
+                                id="myTab" role="tablist">
+                                @php
+                                    $categories = DB::table('category')->get();
+                                    // dd($categories);
+                                @endphp
+                                @if ($categories)
+                                    <button class="btn" style="background:black; font-size : 14px;"data-filter="*">
+                                        Semua Genre
+                                    </button>
+                                    @foreach ($categories as $key => $cat)
+                                        @php
+                                            $count = DB::table('books')
+                                                ->where('category_id', $cat->id)
+                                                ->count();
+                                        @endphp
+                                        <button class="btn" style="background:none;color:black; font-size : 12px;"
+                                            data-filter=".{{ $cat->id }}">
+                                            {{ $cat->name }} ({{ $count }})
+                                        </button>
+                                    @endforeach
+                                @endif
+                            </ul>
+                            <!--/ End Tab Nav -->
                         </div>
                     </div>
                 </div>
@@ -217,7 +224,7 @@
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
         <script>
             /*==================================================================
-                                                                                                                                                                                                                                                [ Isotope ]*/
+                                                                                                                                                                                                                                                                                                                        [ Isotope ]*/
             var $topeContainer = $('.isotope-grid');
             var $filter = $('.filter-tope-group');
             console.log($filter, $topeContainer);

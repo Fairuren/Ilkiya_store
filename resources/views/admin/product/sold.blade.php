@@ -13,11 +13,11 @@
                         method="post" action="{{ route('allsold.pdf') }}">
                         {{ csrf_field() }}
                         <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
-                        <input
+                        <input required
                             style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(175, 175, 175) ; border-radius : 4px;"
                             type="date" name="start" />
                         <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">-</label>
-                        <input
+                        <input required
                             style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(175, 175, 175) ; border-radius : 4px;"
                             type="date" name="end" />
                         <button type="submit" class="btn btn-primary btn-sm float-right"><i
@@ -37,8 +37,9 @@
                                     <th>Judul Buku</th>
                                     <th>Kategori</th>
                                     <th>Jumlah Terjual</th>
-                                    <th>Total Harga</th>
                                     <th>Tanggal Terjual</th>
+                                    <th>Total Harga</th>
+
                                 </tr>
                             </thead>
                             <tfoot>
@@ -47,8 +48,8 @@
                                     <th>Judul Buku</th>
                                     <th>Kategori</th>
                                     <th>Jumlah Terjual</th>
-                                    <th>Total Harga</th>
                                     <th>Tanggal Terjual</th>
+                                    <th>Total Harga</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -66,9 +67,8 @@
                                         <td>{{ $product->book->name }}</td>
                                         <td>{{ $product->book->category->name }}</td>
                                         <td>{{ $product->quantity }} </td>
-                                        <td>Rp. {{ number_format($product->amount, 2) }} </td>
                                         <td>{{ $product->updated_at }}</td>
-
+                                        <td>Rp. {{ number_format($product->amount, 2) }} </td>
                                     </tr>
                                 @endforeach
                             </tbody>

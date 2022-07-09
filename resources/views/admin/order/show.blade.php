@@ -112,7 +112,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Ongkir</td>
-                                                <td> : Rp. {{ $order->shipping ? $order->shipping->price : 0 }}</td>
+                                                <td> : Rp. {{ $order->ongkir }}</td>
                                             </tr>
 
                                             <tr>

@@ -1,5 +1,5 @@
 <footer class="footer">
-  <div class="container-fluid">
+  {{-- <div class="container-fluid">
     <nav class="float-left">
    
     </nav>
@@ -11,5 +11,5 @@
         
   
     </div>
-  </div>
+  </div> --}}
 </footer>

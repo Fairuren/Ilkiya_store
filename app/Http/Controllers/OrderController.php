@@ -185,8 +185,9 @@ class OrderController extends Controller
         ]);
         $data=$request->all();
         // return $request->status;
-        
-        $order['cancel_reason'] = "Stok Habis";
+       if($request->status=='cancelled'){
+           $order['cancel_reason'] = "Stok Habis";
+       } 
         if($request->status=='delivered'){
             foreach($order->cart as $cart){
                 $product=$cart->book;
@@ -195,8 +196,6 @@ class OrderController extends Controller
                 $product->save();
             }
         }
-
-
 
         $status=$order->fill($data)->save();
         if($status){
