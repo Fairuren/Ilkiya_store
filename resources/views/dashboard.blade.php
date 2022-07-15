@@ -73,6 +73,76 @@
             </div>
           </div>
         </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header  card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">book</i>
+              </div>
+              <p class="card-category">Buku Terjual</p>
+              <h3 class="card-title">{{\App\Models\Book::getAllSoldBook()}}
+                <small>Judul</small>
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">info</i> Total Buku Terjual
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">list</i>
+              </div>
+              <p class="card-category">Total Pesanan</p>
+              <h3 class="card-title">{{\App\Models\Order::countActiveOrder()}}
+                <small>Pesanan</small>
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">info</i> Total Pesanan 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-icon">
+              <div  class="card-icon">
+                <i class="material-icons">check</i>
+              </div>
+              <p style="font-size : 13px;" class="card-category">Pesanan Sukses</p>
+              <h3 class="card-title">{{\App\Models\Category::countActiveCategory()}}
+                <small>Pesanan</small>
+              </h3>
+            </div>
+            <div style="margin-top : 2px;" class="card-footer">
+              <div class="stats">
+                <i class="material-icons">info</i> Total Pesanan yang berhasil sampai ke pelanggan
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header  card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">cancel</i>
+              </div>
+              <p style="font-size : 12px;" class="card-category">Pesanan Dibatalkan</p>
+              <h3 class="card-title">{{\App\Models\User::getTotalUser()}}  <small>Pesanan</small></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">info</i> Total Pesanan Dibatalkan
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div style="padding: 12px;" class="row">
         <div id="myAreaChart" style="width: 100%; height: 500px"></div>

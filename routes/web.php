@@ -122,6 +122,7 @@ Route::group(['prefix'=>'/admin', 'middleware' => ['auth', 'su-admin']], functio
 	
         
     Route::get('/user/cancel-order', [OrderController::class, 'canceledOrderViewAdmin'])->name('canceled.view');
+   
     Route::post('cancelorderpdf', [OrderController::class, 'cancelOrderPdf'])->name('cancel.order.pdf');
     Route::resource('category', CategoryController::class)->name('*','category');
 
@@ -162,7 +163,7 @@ Route::group(['prefix'=>'/admin', 'middleware' => ['auth', 'su-admin']], functio
     Route::post('allbook/pdf',[ProductController::class, 'all_book_pdf'])->name('allbook.pdf');
     Route::post('allsold/pdf',[ProductController::class, 'all_sold_pdf'])->name('allsold.pdf');
     Route::post('alldiscount/pdf',[ProductController::class, 'all_discount_pdf'])->name('discount.pdf');
-    Route::post('allusers/pdf',[UserController::class, 'all_users_pdf'])->name('allusers.pdf');
+    Route::get('allusers/pdf',[UserController::class, 'all_users_pdf'])->name('allusers.pdf');
     Route::post('chart_income/pdf',[OrderController::class, 'chart_income_pdf'])->name('chart_income.pdf');
     Route::get('order_detail/pdf/{id}',[OrderController::class, 'orderDetailPDF'])->name('get_order_detail.pdf');
     
@@ -202,6 +203,8 @@ Route::group(['prefix'=>'/user','middleware'=>['user']],function(){
     
     Route::get('/user/cancel-order/{id}', [OrderController::class, 'cancelOrderView'])->name('user.cancel');
     Route::patch('/user/cancel_order/{id}',[OrderController::class, 'cancelOrder'])->name('user.cancel.order');
+    Route::patch('/user/received_order/{id}', [OrderController::class, 'receivedOrder'])->name('user.received.order');
+    
     // Post comment
     Route::get('user-post/comment',[HomeController::class, 'userComment'])->name('user.post-comment.index');
 

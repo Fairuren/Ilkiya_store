@@ -14,6 +14,7 @@
             <h3 style='text-decoration: underline;'>Laporan Data Detail Pesanan</h3>
 
             {{-- header --}}
+
         </div>
         <table class="table">
             <tr class="">
@@ -32,7 +33,10 @@
                 <td>Alamat</td>
                 <td> : {{ $order->address }}</td>
             </tr>
-
+            <tr>
+                <td>Kota</td>
+                <td> : {{ $order->city }}</td>
+            </tr>
             <tr>
                 <td>Kode Pos</td>
                 <td> : {{ $order->post_code }}</td>
@@ -56,7 +60,7 @@
             </tr>
             <tr>
                 <td>Ongkir</td>
-                <td> : Rp. {{ $order->shipping ? $order->shipping->price : 0 }}</td>
+                <td> : Rp. {{ number_format($order->ongkir, 2) }}</td>
             </tr>
 
             <tr>

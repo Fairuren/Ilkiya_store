@@ -48,7 +48,7 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function getTotalUser(){
+    public static function getTotalUser(){
         $user = User::get();
 
         $count = 0 ;
@@ -63,7 +63,7 @@ class User extends Authenticatable
 
     }
 
-    public static function getAllUsersReport($start, $end){
-        return User::where('role', 'user')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
+    public static function getAllUsersReport(){
+        return User::get();
     }
 }

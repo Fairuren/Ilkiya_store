@@ -22,7 +22,9 @@
                                 <th>Charge</th>
                                 <th>Total Amount</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                @if ($order->status == 'delivered')
+                                    <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -36,24 +38,43 @@
                                 <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
                                 <td>
                                     @if ($order->status == 'new')
-                                        <span class="badge badge-primary">{{ $order->status }}</span>
-                                    @elseif($order->status == 'process')
-                                        <span class="badge badge-warning">{{ $order->status }}</span>
+                                         <span class="badge badge-primary">{{ $order->status }}</span>
+                                    @elseif($order->status == 'processing')
+                                        <span class="badge badge-warning">{{ "DiProses" }}</span>
                                     @elseif($order->status == 'delivered')
-                                        <span class="badge badge-success">{{ $order->status }}</span>
+                                        <span class="badge badge-success">{{ "DiKirim" }}</span>
+                                    @elseif($order->status == 'cancelled')
+                                        <span class="badge badge-danger">{{ "Dibatalkan" }}</span>
+                                    @elseif($order->status == 'received')
+                                        <span class="badge badge-success">{{"Diterima" }}</span>
                                     @else
                                         <span class="badge badge-danger">{{ $order->status }}</span>
                                     @endif
+                                  
                                 </td>
+                                @if ($order->status == 'delivered')
                                 <td>
-                                    <form method="POST" action="{{ route('orderuser.destroy', [$order->id]) }}">
+                                    {{-- <form method="POST" action="{{ route('orderuser.destroy', [$order->id]) }}">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger btn-sm dltBtn" data-id={{ $order->id }}
                                             data-toggle="tooltip" data-placement="bottom" title="Delete"><i
-                                                class="material-icons">delete</i></button>
+                                                class="material-icons">delete</i>
+                                        </button>
+                                    </form>
+                                        --}}
+                                    <form action="{{route('user.received.order',$order->id)}}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="btn btn-success btn-sm receivedBtn" data-id={{ $order->id }}
+                                            data-toggle="tooltip"  data-placement="bottom" title="Delete"><i
+                                                class="material-icons">check</i>
+                                        </button>
+                                        <input type="hidden" name="status" value="received">
                                     </form>
                                 </td>
+                            @endif
+                               
 
                             </tr>
                         </tbody>
@@ -81,6 +102,10 @@
                                             <tr>
                                                 <td>Alamat</td>
                                                 <td> : {{ $order->address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kota</td>
+                                                <td> : {{ $order->city }}</td>
                                             </tr>
 
                                             <tr>
@@ -197,6 +222,29 @@
                         }
                     });
             })
+
+            $('.receivedBtn').click(function(e) {
+                var form = $(this).closest('form');
+                var dataID = $(this).data('id');
+                // alert(dataID);
+                e.preventDefault();
+                swal({
+                        title: "Apa Anda Sudah Menerima Barang ?",
+                        // text: "!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        } else {
+                            swal("DiBatalkan!");
+                        }
+                    });
+            })
         })
+
+        
     </script>
 @endpush

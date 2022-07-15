@@ -181,7 +181,7 @@ class OrderController extends Controller
     {
         $order=Order::find($id);
         $this->validate($request,[
-            'status'=>'required|in:new,processing,delivered,cancelled'
+            'status'=>'required|in:new,processing,delivered,cancelled,received'
         ]);
         $data=$request->all();
         // return $request->status;
@@ -204,7 +204,24 @@ class OrderController extends Controller
         else{
             request()->session()->flash('error','Error while updating order');
         }
+
+
+
         return redirect()->route('order.index');
+    }
+
+    public function receivedOrder (Request $request, $id){
+        $order = Order::find($id);
+        $data = $request->all();
+        $status=$order->fill($data)->save();
+        if($status){
+            request()->session()->flash('success','Successfully updated order');
+        }
+        else{
+            request()->session()->flash('error','Error while updating order');
+        }
+
+        return redirect()->route('user.order.index');
     }
 
     /**
@@ -244,7 +261,7 @@ class OrderController extends Controller
     public function incomeChart(Request $request){
         $year=\Carbon\Carbon::now()->year;
         // dd($year);
-        $items=Order::with(['cart'])->whereYear('created_at',$year)->where('status','delivered')->get()
+        $items=Order::with(['cart'])->whereYear('created_at',$year)->where('status','delivered')->orWhere('status','received')->get()
             ->groupBy(function($d){
                 return \Carbon\Carbon::parse($d->created_at)->format('m');
             });
@@ -318,7 +335,7 @@ class OrderController extends Controller
     {
         $year=\Carbon\Carbon::now()->year;
         // dd($year);
-        $items=Order::with(['cart'])->whereYear('created_at',$year)->where('status','delivered')->get()
+        $items=Order::with(['cart'])->whereYear('created_at',$year)->where('status','delivered')->orWhere('status', 'received')->get()
             ->groupBy(function($d){
                 return \Carbon\Carbon::parse($d->created_at)->format('m');
             });

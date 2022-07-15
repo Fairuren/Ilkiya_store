@@ -60,10 +60,14 @@
                                         <td class="text-center">
                                             @if ($order->status == 'new')
                                                 <span class="badge badge-primary">{{ $order->status }}</span>
-                                            @elseif($order->status == 'process')
-                                                <span class="badge badge-warning">{{ $order->status }}</span>
+                                            @elseif($order->status == 'processing')
+                                                <span class="badge badge-warning">{{ "DiProses" }}</span>
                                             @elseif($order->status == 'delivered')
-                                                <span class="badge badge-success">{{ $order->status }}</span>
+                                                <span class="badge badge-success">{{ "DiKirim" }}</span>
+                                            @elseif($order->status == 'cancelled')
+                                                <span class="badge badge-danger">{{ "Dibatalkan" }}</span>
+                                            @elseif($order->status == 'received')
+                                                <span class="badge badge-success">{{"Diterima" }}</span>
                                             @else
                                                 <span class="badge badge-danger">{{ $order->status }}</span>
                                             @endif
@@ -88,7 +92,7 @@
                                 @endforeach
                             @else
                                 <td colspan="8" class="text-center">
-                                    <h4 class="my-4">You have no order yet!! Please order some products</h4>
+                                    <h4 class="my-4">Anda Belum Membeli Produk Buku</h4>
                                 </td>
                             @endif
                         </tbody>

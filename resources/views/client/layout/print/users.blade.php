@@ -11,9 +11,7 @@
     <div class="">
         <div class="text-center">
             <h3>Laporan Data Pengguna</h3>
-            <div style="display: flex;" class="d-flex">
-                <p><span style="font-weight: 900;">Tanggal Daftar</span> : {{$start}} <span style="font-weight: 900;">  Sampai Tanggal</span> : {{$end}}</p>
-            </div>
+          
             {{-- header --}}
         </div>
         <div class="">
@@ -23,8 +21,8 @@
                         <th >No</th>
                         <th >Nama Pengguna</th>
                         <th >Email</th>
-                        {{-- <th> Foto</th> --}}
-                        <th >Tanggal Dibuat</th>
+                        <th> Role</th>
+                        <th class="text-center">Tanggal Registrasi</th>
           
                     </tr>
                 </thead>
@@ -34,6 +32,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->role}}</td>
                         {{-- <td>
                             @if($user->images)
                            
@@ -43,7 +42,7 @@
                             @endif
         
                          </td> --}}
-                        <td>{{$user->created_at}}</td>
+                        <td class="text-center">{{ \Carbon\Carbon::parse($user->created_at)->format('d-M-Y')}}</td>
                       
                     </tr>
                     @endforeach

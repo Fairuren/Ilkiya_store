@@ -44,7 +44,7 @@ class UserController extends Controller
             'name'=>'string|required|max:30',
             'email'=>'string|required|unique:users',
             'password'=>'string|required',
-            'role'=>'required|in:admin,user',
+            'role'=>'required|in:admin,user,su',
             'photo'=>'nullable|string',
         ]);
         // dd($request->all());
@@ -140,11 +140,11 @@ class UserController extends Controller
 
     public function all_users_pdf(Request $request)
     {
-        $user=User::getAllUsersReport($request->start, $request->end);
+        $user=User::getAllUsersReport();
         // return $order;
 
         // return $file_name;
-        $pdf=PDF::loadview('client.layout.print.users',compact('user'), ['start' => $request->start, 'end' => $request->end]);
+        $pdf=PDF::loadview('client.layout.print.users',compact('user'));
         return $pdf->stream('users.pdf');
 
     }

@@ -9,17 +9,9 @@
                 <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Pengguna Website</h6>
 
                 <div class="d-flex float-right">
-                    <form style="width: 28rem; display : flex; justify-content : center ; align-items : center;"
-                        method="post" action="{{ route('allusers.pdf') }}">
-                        {{ csrf_field() }}
-                        <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
-                        <input required
-                            style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(175, 175, 175) ; border-radius : 4px;"
-                            type="date" name="start" />
-                        <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">-</label>
-                        <input required
-                            style="margin: 5px; color : rgb(112, 112, 112); border : 1px solid rgb(175, 175, 175) ; border-radius : 4px;"
-                            type="date" name="end" />
+                    <form style="width: 10rem; display : flex; justify-content : center ; align-items : center;"
+                        method="get" action="{{ route('allusers.pdf') }}">
+                     
                         <button type="submit" class="btn btn-primary btn-sm float-right"><i
                                 class="material-icons">download</i> Unduh PDF</button>
                     </form>
@@ -36,8 +28,8 @@
                                     <th>No.</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Foto</th>
                                     <th>Role</th>
+                                    <th class="text-center">Tanggal Register</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -46,8 +38,8 @@
                                     <th>No.</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Foto</th>
                                     <th>Role</th>
+                                    <th class="text-center">Tanggal Register</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -57,7 +49,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $users->name }}</td>
                                         <td>{{ $users->email }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($users->image)
                                                 <img src="{{ $user->image }}" class="img-fluid rounded-circle"
                                                     alt="{{ $user->photo }}">
@@ -66,7 +58,7 @@
                                                     alt="avatar.png">
                                             @endif
 
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             @if ($users->role == 'admin')
                                                 <span class="badge badge-primary">{{ $users->role }}</span>
@@ -76,7 +68,7 @@
                                                 <span class="badge badge-danger">{{ $users->role }}</span>
                                             @endif
                                         </td>
-
+                                        <td class="text-center">{{ \Carbon\Carbon::parse($users->created_at)->format('d-M-Y')}}</td>
                                         <td>
                                             {{-- <a href="{{route('product.edit',$users->id)}}" class="btn btn-primary btn-sm" style="height:30px; width:20px;" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="material-icons">edit</i></a> --}}
                                             <div class="d-flex">

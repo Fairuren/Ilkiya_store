@@ -29,11 +29,27 @@ class Book extends Model
         return Book::with('category')->orderBy('id', 'desc')->paginate(10);
     }
 
+
     public function getReview(){
         return $this->hasMany(Review::class,'book_id','id')->with('userInfo')->where('status','active')->orderBy('id','DESC');
     }
 
-    
+    public function GetSoldBooks(){
+        $books = Cart::where('order_id', '!=', null)->get();
+       
+        return view('admin.product.sold')->with('books', $books);
+    }
+
+    public static function getAllSoldBook(){
+        $books = Cart::where('order_id', '!=', null)->get();
+        $count = 0;
+
+        foreach($books as $book){
+            $count += $book->quantity;
+        };
+        return $count;
+    }
+   
     public static function getAllBooksReport($start, $end){
         return Book::whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }

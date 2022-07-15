@@ -26,7 +26,7 @@ class OrderTable extends Migration
             $table->integer('quantity');
             $table->string('transfer_evidence');
             $table->enum('payment_status',['pending', 'paid', 'cancelled']);
-            $table->enum("status", ['new', 'processing','delivered', 'cancelled']);
+            $table->enum("status", ['new', 'processing','delivered','received','cancelled']);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('cancel_reason')->nullable();
             $table->unsignedBigInteger('shipping_id')->nullable();

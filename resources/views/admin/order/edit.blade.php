@@ -6,7 +6,7 @@
     <div class="card-header card-header-primary">
       <h4 class="card-title">{{ __('Edit Order Status') }}</h4>
       <p class="card-category">{{ __('Edit Order Status pada form di bawah') }}</p>
-    </div>
+  </div>
     <div style="padding : 40px;" class="container-fluid">
       <div class="row">
         <div class="col-md-12">

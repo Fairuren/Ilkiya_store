@@ -31,6 +31,9 @@ class Order extends Model
     public static function getAllOrderCanceled($start, $end){
         return Order::where('status', '=', 'cancelled')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
+    public static function getAllOrderReceived($start, $end){
+        return Order::where('status', '=', 'received')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
+    }
     public static function getOrder($id){
         return Order::find($id);
     }
@@ -46,9 +49,25 @@ class Order extends Model
         }
         return 0;
     }
-
+    public static function getAllReceivedBook (){
+        $books = Cart::where('status','received' )->count();
+        
+        if($data){
+            return $data;
+        }
+        return 0;
+    }
+    public static function getAllcanceledBook(){
+        $books = Cart::where('status','canceled' )->count();
+        
+        if($data){
+            return $data;
+        }
+        return 0;
+    }
+    
     public static function totalIncome(){
-        $data = Order::where('status','delivered')->sum('sub_total');
+        $data = Order::where('status','delivered')->orWhere('status', 'received')->sum('sub_total');
         if($data){
             return $data;
         }
@@ -56,14 +75,14 @@ class Order extends Model
     }
 
     public static function totalIncomeToday(){
-        $data = Order::whereDay('created_at',date('d'))->where('status','delivered')->sum('sub_total');
+        $data = Order::whereDay('created_at',date('d'))->where('status','delivered')->orWhere('status', 'received')->sum('sub_total');
         if($data){
             return $data;
         }
         return 0;
     }
     public static function totalIncomeThisMonth(){
-        $data = Order::whereMonth('created_at', date('m'))->where('status','delivered')->sum('sub_total');
+        $data = Order::whereMonth('created_at', date('m'))->where('status','delivered')->orWhere('status', 'received')->sum('sub_total');
         if($data){
             return $data;
         }
@@ -71,7 +90,7 @@ class Order extends Model
     }
 
     public static function totalIncomeThisYear(){
-        $data = Order::whereYear('created_at', date('Y'))->where('status','delivered')->sum('sub_total');
+        $data = Order::whereYear('created_at', date('Y'))->where('status','delivered')->orWhere('status', 'received')->sum('sub_total');
         if($data){
             return $data;
         }
