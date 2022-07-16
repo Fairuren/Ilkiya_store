@@ -6,9 +6,9 @@
         <div class="card shadow mb-4">
 
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Order Yang Dicancel</h6>
+                <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Order Yang Sukses</h6>
                 <form style="width: 28rem; display : flex; justify-content : center ; align-items : center;"
-                    class="float-right" method="post" action="{{ route('cancel.order.pdf') }}">
+                    class="float-right" method="post" action="{{ route('received.order.pdf') }}">
                     {{ csrf_field() }}
                     <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
                     <input required
@@ -33,8 +33,8 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Jumlah</th>
-                                    <th>Alasan Pembatalan</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Pesan</th>
+                                    <th>Tanggal Diterima</th>
                                     <th>Total Harga</th>
                                 </tr>
                             </thead>
@@ -45,8 +45,8 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Jumlah</th>
-                                    <th>Alasan Pembatalan</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Pesan</th>
+                                    <th>Tanggal Diterima</th>
                                     <th>Total Harga</th>
                                 </tr>
                             </tfoot>
@@ -63,7 +63,9 @@
                                         <td>{{ $order->first_name }} {{ $order->last_name }}</td>
                                         <td>{{ $order->email }}</td>
                                         <td>{{ $order->quantity }}</td>
-                                        <td class="text-center">{{ $order->cancel_reason ? $order->cancel_reason : '-' }}
+                                        </td>
+                                        <td>
+                                            {{ $order->created_at }}
                                         </td>
                                         <td>
                                             {{ $order->updated_at }}
@@ -115,7 +117,6 @@
         $('#product-dataTable').DataTable({
             "ordering": false
         });
-
         // Sweet alert
 
         function deleteData(id) {

@@ -23,7 +23,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::orderBy('id','ASC')->where('status' , '!=', 'cancelled')->get();
+        $orders=Order::orderBy('id','ASC')->where('status' , '!=', 'received')->where('status', '!=', 'cancelled')->get();
         return view('admin.order.index')->with('orders',$orders);
     }
 
@@ -118,6 +118,13 @@ class OrderController extends Controller
 
         return view('admin.order.cancel')->with('orders', $orders);
     }
+
+    public function receivedOrderViewAdmin(){
+        $orders=Order::orderBy('id','ASC')->where('status' , '=', 'received')->get();
+
+        return view('admin.order.received')->with('orders', $orders);
+    }
+
 
     public function cancelOrder(Request $request, $id){
 
@@ -326,6 +333,13 @@ class OrderController extends Controller
         $order=Order::getAllOrderCanceled( $request->start, $request->end);
         $pdf=PDF::loadview('client.layout.print.allcancell',compact('order'), ['start' => $request->start, 'end' => $request->end]);
         return $pdf->stream('allcancell.pdf');
+
+    }
+    public function receivedOrderPdf(User $user, Request $request)
+    {
+        $order=Order::getAllOrderReceived( $request->start, $request->end);
+        $pdf=PDF::loadview('client.layout.print.orderreceived',compact('order'), ['start' => $request->start, 'end' => $request->end]);
+        return $pdf->stream('received.pdf');
 
     }
 

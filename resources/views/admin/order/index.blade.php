@@ -67,7 +67,7 @@
                                         <td>
                                             @if ($order->status == 'new')
                                                 <span class="badge badge-primary">{{ $order->status }}</span>
-                                            @elseif($order->status == 'process')
+                                            @elseif($order->status == 'processing')
                                                 <span class="badge badge-warning">{{ $order->status }}</span>
                                             @elseif($order->status == 'delivered')
                                                 <span class="badge badge-success">{{ $order->status }}</span>
@@ -141,9 +141,11 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
     <script>
-        $('#product-dataTable').DataTable();
-
+       $('#product-dataTable').DataTable({
+            "ordering": false
+        });
         // Sweet alert
+
 
         function deleteData(id) {
 

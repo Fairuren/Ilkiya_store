@@ -24,32 +24,32 @@
         <div class="">
             <table class="table table-bordered">
                 <thead>
-                    <tr style="font-size: 12px;">
-                        <th>No</th>
-                        <th>Nama Pemesan</th>
-                        <th>Nomor Order</th>
-                        <th>Status</th>
-                        <th>Jumlah </th>
-                        <th>Tanggal Pesan</th>
-                        <th>Harga (Rp.)</th>
-                        <th>Ongkir (Rp.)</th>
-                        <th>Total Harga (Rp.)</th>
+                    <tr style="font-size: 10px;">
+                        <th style="border : 1px solid black;">No</th>
+                        <th style="border : 1px solid black;">Nama</th>
+                        <th style="border : 1px solid black;">No Order</th>
+                        <th style="border : 1px solid black;">Status</th>
+                        <th style="border : 1px solid black; width : 6px;">Jumlah </th>
+                        <th style="border : 1px solid black;">Tanggal Pesan</th>
+                        <th style="border : 1px solid black;">Harga</th>
+                        <th style="border : 1px solid black;">Ongkir</th>
+                        <th style="border : 1px solid black;">Total Harga</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($order as $order)
                         <tr style="font-size: 12px;">
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $order->first_name }}</td>
-                            <td>{{ $order->order_number }}</td>
-                            <td>{{ $order->status }}</td>
-                            <td>{{ $order->quantity }}</td>
-                            <td>{{ $order->created_at }}</td>
-                            <td>{{ number_format($order->total_amount, 2) }}</td>
-                            <td>{{ number_format($order->ongkir, 2) }}</td>
+                            <td  style="border : 1px solid black;">{{ $loop->iteration }}</td>
+                            <td  style="border : 1px solid black;">{{ $order->first_name }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px;">{{ $order->order_number }}</td>
+                            <td  style="border : 1px solid black;">{{ $order->status }}</td>
+                            <td  style="border : 1px solid black; text-align : center;">{{ $order->quantity }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px;">{{ $order->created_at }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->total_amount) }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->ongkir) }}</td>
 
-                            <td>{{ number_format($order->total_amount + $order->ongkir, 2) }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->total_amount + $order->ongkir) }}</td>
 
 
                         </tr>

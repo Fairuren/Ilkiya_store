@@ -121,9 +121,11 @@ Route::group(['prefix'=>'/admin', 'middleware' => ['auth', 'su-admin']], functio
     Route::patch('discount/{id}', [ProductController::class, 'EditDiscount'])->name('discount.edit');
 	
         
-    Route::get('/user/cancel-order', [OrderController::class, 'canceledOrderViewAdmin'])->name('canceled.view');
+    Route::get('/cancel-order', [OrderController::class, 'canceledOrderViewAdmin'])->name('canceled.view');
+    Route::get('/success-order', [OrderController::class, 'receivedOrderViewAdmin'])->name('received.view');
    
     Route::post('cancelorderpdf', [OrderController::class, 'cancelOrderPdf'])->name('cancel.order.pdf');
+    Route::post('receivedorderpdf', [OrderController::class, 'receivedOrderPdf'])->name('received.order.pdf');
     Route::resource('category', CategoryController::class)->name('*','category');
 
 	Route::resource('publisher', PublisherController::class)->name('*','publisher');

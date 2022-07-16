@@ -1,11 +1,6 @@
 <div class="sidebar" data-color="green" data-background-color="white"
     data-image="{{ asset('material') }}/img/sidebar-1.jpg">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-  -->
-
+   
     <div class="logo">
         <a href="/admin" class="simple-text logo-normal">
             {{-- ADMIN ILKIYA --}}
@@ -154,7 +149,13 @@
                     <p>{{ __('Pesanan') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ Request::is('admin/order_cancel') ? ' active' : '' }}">
+            <li class="nav-item{{ Request::is('admin/success-order') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('received.view') }}">
+                    <i class="material-icons">check</i>
+                    <p>{{ __('Pesanan Sukses') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ Request::is('admin/cancel-order') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('canceled.view') }}">
                     <i class="material-icons">cancel</i>
                     <p>{{ __('Pesanan DiBatalkan') }}</p>

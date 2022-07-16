@@ -26,7 +26,7 @@ class Order extends Model
     }
 
     public static function getAllOrder($start, $end){
-        return Order::where('status' , '!=', "cancelled")->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
+        return Order::where('status' , '!=', "cancelled")->where('status', '!=', 'received')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
     }
     public static function getAllOrderCanceled($start, $end){
         return Order::where('status', '=', 'cancelled')->whereDate('created_at','>=',$start)->whereDate('created_at','<=',$end)->get();
