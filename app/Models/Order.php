@@ -43,25 +43,25 @@ class Order extends Model
     }
 
     public static function countActiveOrder(){
-        $data=Order::count();
+        $data=Order::where('status','!=','cancelled')->where('status', '!=','received')->count();
         if($data){
             return $data;
         }
         return 0;
     }
     public static function getAllReceivedBook (){
-        $books = Cart::where('status','received' )->count();
+        $books = Order::where('status','received' )->count();
         
-        if($data){
-            return $data;
+        if($books){
+            return $books;
         }
         return 0;
     }
     public static function getAllcanceledBook(){
-        $books = Cart::where('status','canceled' )->count();
+        $books = Order::where('status','cancelled')->count();
         
-        if($data){
-            return $data;
+        if($books){
+            return $books;
         }
         return 0;
     }

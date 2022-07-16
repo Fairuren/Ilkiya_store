@@ -116,7 +116,7 @@
                 <i class="material-icons">check</i>
               </div>
               <p style="font-size : 13px;" class="card-category">Pesanan Sukses</p>
-              <h3 class="card-title">{{\App\Models\Category::countActiveCategory()}}
+              <h3 class="card-title">{{\App\Models\Order::getAllReceivedBook()}}
                 <small>Pesanan</small>
               </h3>
             </div>
@@ -134,7 +134,7 @@
                 <i class="material-icons">cancel</i>
               </div>
               <p style="font-size : 12px;" class="card-category">Pesanan Dibatalkan</p>
-              <h3 class="card-title">{{\App\Models\User::getTotalUser()}}  <small>Pesanan</small></h3>
+              <h3 class="card-title">{{\App\Models\Order::getAllcanceledBook()}}  <small>Pesanan</small></h3>
             </div>
             <div class="card-footer">
               <div class="stats">
