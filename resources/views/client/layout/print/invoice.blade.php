@@ -132,7 +132,7 @@
                     <tr>
                         <th scope="col" class="col-6">Judul Buku</th>
                         <th scope="col" class="col-3">Jumlah</th>
-                        <th scope="col" class="col-3">Total</th>
+                        <th scope="col" class="col-3 text-right">Total</th>
                     </tr>
                 </thead>
                 <tbody>
