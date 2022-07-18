@@ -32,7 +32,7 @@
                         <th>Jumlah</th>
                         <th>Alasan Pembatalan</th>
                         <th>Tanggal</th>
-                        <th>Total Harga</th>
+                        <th style="text-align : right;">Total Harga</th>
 
                     </tr>
                 </thead>
@@ -46,7 +46,7 @@
                             <td>{{ $order->quantity }}</td>
                             <td class="text-center">{{ $order->cancel_reason ? $order->cancel_reason : '-' }}</td>
                             <td>{{ $order->updated_at }}</td>
-                            <td>{{ number_format($order->total_amount + $order->ongkir, 2) }}</td>
+                            <td  style="text-align : right;">{{ number_format($order->total_amount + $order->ongkir, 2) }}</td>
 
                         </tr>
                     @endforeach

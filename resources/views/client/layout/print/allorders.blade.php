@@ -33,7 +33,7 @@
                         <th style="border : 1px solid black;">Tanggal Pesan</th>
                         <th style="border : 1px solid black;">Harga</th>
                         <th style="border : 1px solid black;">Ongkir</th>
-                        <th style="border : 1px solid black;">Total Harga</th>
+                        <th style="border : 1px solid black; text-align : right;">Total Harga</th>
 
                     </tr>
                 </thead>
@@ -48,8 +48,7 @@
                             <td  style="border : 1px solid black; font-size : 9px;">{{ $order->created_at }}</td>
                             <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->total_amount) }}</td>
                             <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->ongkir) }}</td>
-
-                            <td  style="border : 1px solid black; font-size : 9px;">Rp. {{ number_format($order->total_amount + $order->ongkir) }}</td>
+                            <td  style="border : 1px solid black; font-size : 9px; text-align : right;">Rp. {{ number_format($order->total_amount + $order->ongkir) }}</td>
 
 
                         </tr>

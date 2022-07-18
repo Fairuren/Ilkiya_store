@@ -132,7 +132,7 @@
                     <tr>
                         <th scope="col" class="col-6">Judul Buku</th>
                         <th scope="col" class="col-3">Jumlah</th>
-                        <th scope="col" class="col-3">Total</th>
+                        <th scope="col" class="col-3 text-right">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -150,7 +150,7 @@
                                     @endforeach
                                 </span></td>
                             <td>x{{ $cart->quantity }}</td>
-                            <td><span>Rp. {{ number_format($cart->price, 2) }}</span></td>
+                            <th class="text-right"> <span >Rp. {{ number_format($cart->price, 2) }}</span></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -158,7 +158,7 @@
                     <tr>
                         <th scope="col" class="empty"></th>
                         <th scope="col" class="text-right">Subtotal:</th>
-                        <th scope="col"> <span>Rp. {{ number_format($order->sub_total, 2) }}</span></th>
+                        <th class="text-right"> <span >Rp. {{ number_format($order->sub_total, 2) }}</span></th>
                     </tr>
                     {{-- @if (!empty($order->coupon))
         <tr>
@@ -170,13 +170,12 @@
                     <tr>
                         <th scope="col" class="empty"></th>
                         <th scope="col" class="text-right ">Ongkir:</th>
-                        <th><span>Rp. {{ number_format($order->ongkir, 2) }}</span></th>
+                        <th class="text-right"> <span >Rp. {{ number_format($order->ongkir, 2) }}</span></th>
                     </tr>
                     <tr>
                         <th scope="col" class="empty"></th>
                         <th scope="col" class="text-right">Total:</th>
-                        <th>
-                            <span>
+                        <th class="text-right"> <span >
                                 Rp. {{ number_format($order->total_amount, 2) }}
                             </span>
                         </th>
