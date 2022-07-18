@@ -44,7 +44,7 @@ class UserController extends Controller
             'name'=>'string|required|max:30',
             'email'=>'string|required|unique:users',
             'password'=>'string|required',
-            'role'=>'required|in:admin,user',
+            'role'=>'required|in:admin,user,su',
             'photo'=>'nullable|string',
         ]);
         // dd($request->all());

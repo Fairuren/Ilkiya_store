@@ -32,10 +32,10 @@
                                     <th>Order No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Status</th>
                                     <th>Jumlah</th>
                                     <th>Ongkir</th>
                                     <th>Total Harga</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,10 +45,10 @@
                                     <th>Order No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Status</th>
                                     <th>Jumlah</th>
                                     <th>Ongkir</th>
                                     <th>Total Harga</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -64,9 +64,6 @@
                                         <td>{{ $order->order_number }}</td>
                                         <td>{{ $order->first_name }} {{ $order->last_name }}</td>
                                         <td>{{ $order->email }}</td>
-                                        <td>{{ $order->quantity }}</td>
-                                        <td> Rp. {{ number_format($order->ongkir, 2) }}</td>
-                                        <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
                                         <td>
                                             @if ($order->status == 'new')
                                                 <span class="badge badge-primary">{{ $order->status }}</span>
@@ -78,6 +75,9 @@
                                                 <span class="badge badge-danger">{{ $order->status }}</span>
                                             @endif
                                         </td>
+                                        <td>{{ $order->quantity }}</td>
+                                        <td> Rp. {{ number_format($order->ongkir, 2) }}</td>
+                                        <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('order.show', $order->id) }}"

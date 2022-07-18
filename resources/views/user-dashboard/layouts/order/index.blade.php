@@ -88,7 +88,7 @@
                                 @endforeach
                             @else
                                 <td colspan="8" class="text-center">
-                                    <h4 class="my-4">You have no order yet!! Please order some products</h4>
+                                    <h4 class="my-4">Anda Belum Membeli Produk Buku</h4>
                                 </td>
                             @endif
                         </tbody>
