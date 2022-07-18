@@ -29,7 +29,7 @@
                         <th>Kategori</th>
                         <th class="text-center">Jumlah Terjual</th>
                         <th>Tanggal Terjual</th>
-                        <th>Total Harga</th>
+                        <th style="text-align : right;">Total Harga</th>
 
 
                     </tr>
@@ -42,7 +42,7 @@
                             <td>{{ $book->book->category->name }}</td>
                             <td class="text-center">{{ $book->quantity }} </td>
                             <td>{{ $book->updated_at }}</td>
-                            <td>Rp. {{ number_format($book->amount, 2) }} </td>
+                            <td  style="text-align : right;">Rp. {{ number_format($book->amount, 2) }} </td>
 
                         </tr>
                     @endforeach
