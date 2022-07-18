@@ -70,7 +70,7 @@
             </div>
             <div style="padding: 12px;">
                 <div id="myAreaChart" style="width: 100%; height: 500px"></div>
-                <form class="float-right" method="post" action="{{ route('chart_income.pdf') }}">
+                <form class="float-right" method="post" target="_blank" action="{{ route('chart_income.pdf') }}">
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-primary btn-sm"><i class="material-icons">download</i> Unduh
                         PDF</button>

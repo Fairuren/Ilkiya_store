@@ -39,8 +39,7 @@
                         <td>{{$book->category['name']}}</td>
                         <td>{{$book->stock}}</td>
                         <td >{{$book->writer['name']}}</td>
-                        <td >{{$book->publisher['name']}}</td>
-                 
+                        <td >{{$book->publisher['name']}}</td>              
                         <td >{{number_format($book->price,2)}}</td>
                         <td >{{number_format($book->price * $book->stock,2)}}</td>
                       

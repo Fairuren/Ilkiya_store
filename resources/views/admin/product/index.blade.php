@@ -10,7 +10,7 @@
 
                 <div class="d-flex float-right">
                     <form style="width: 28rem; display : flex; justify-content : center ; align-items : center;"
-                        method="post" action="{{ route('allbook.pdf') }}">
+                        method="post" target="_blank" action="{{ route('allbook.pdf') }}">
                         {{ csrf_field() }}
                         <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
                         <input required

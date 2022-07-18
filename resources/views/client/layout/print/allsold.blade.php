@@ -27,7 +27,7 @@
                         <th>No</th>
                         <th>Judul Buku</th>
                         <th>Kategori</th>
-                        <th>Jumlah Terjual</th>
+                        <th class="text-center">Jumlah Terjual</th>
                         <th>Tanggal Terjual</th>
                         <th>Total Harga</th>
 
@@ -40,7 +40,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $book->book->name }}</td>
                             <td>{{ $book->book->category->name }}</td>
-                            <td>{{ $book->quantity }} </td>
+                            <td class="text-center">{{ $book->quantity }} </td>
                             <td>{{ $book->updated_at }}</td>
                             <td>Rp. {{ number_format($book->amount, 2) }} </td>
 

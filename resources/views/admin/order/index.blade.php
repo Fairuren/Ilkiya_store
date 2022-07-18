@@ -8,7 +8,7 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary float-left">Daftar Order</h6>
                 <form style="width: 28rem; display : flex; justify-content : center ; align-items : center;"
-                    class="float-right" method="post" action="{{ route('allorder.pdf') }}">
+                    class="float-right" method="post" target="_blank" action="{{ route('allorder.pdf') }}">
                     {{ csrf_field() }}
                     <label style="padding: 0px; margin : 0px; color :rgb(36, 36, 36)" for="">Dari</label>
                     <input required
