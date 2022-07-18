@@ -27,7 +27,7 @@
                         <th >Penulis</th>
                         <th >Penerbit</th>
                         <th >Harga Satuan</th>
-                        <th >Total</th>
+                        <th style="text-align : right;">Total</th>
           
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
                         <td >{{$book->writer['name']}}</td>
                         <td >{{$book->publisher['name']}}</td>              
                         <td >{{number_format($book->price,2)}}</td>
-                        <td >{{number_format($book->price * $book->stock,2)}}</td>
+                        <td style="text-align : right;">{{number_format($book->price * $book->stock,2)}}</td>
                       
                     </tr>
                     @endforeach

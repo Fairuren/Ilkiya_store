@@ -28,8 +28,8 @@
                         <th>Judul Buku</th>
                         <th>Stok</th>
                         <th>Diskon </th>
-                        <th>Harga Sebelum Diskon</th>
-                        <th>Harga Setelah Diskon</th>
+                        <th style="text-align : right;">Harga Sebelum Diskon</th>
+                        <th style="text-align : right;">Harga Setelah Diskon</th>
 
                     </tr>
                 </thead>
@@ -40,8 +40,8 @@
                             <td>{{ $book->name }}</td>
                             <td>{{ $book->stock }}</td>
                             <td>{{ $book->discount }} %</td>
-                            <td>Rp. {{ number_format($book->price, 2) }}</td>
-                            <td>Rp. {{ number_format($book->price - ($book->discount * $book->price) / 100, 2) }}</td>
+                            <td style="text-align : right;">Rp. {{ number_format($book->price, 2) }}</td>
+                            <td style="text-align : right;">Rp. {{ number_format($book->price - ($book->discount * $book->price) / 100, 2) }}</td>
 
                         </tr>
                     @endforeach
