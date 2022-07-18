@@ -10,7 +10,7 @@
 
                 <div class="d-flex float-right">
                     <form style="width: 10rem; display : flex; justify-content : center ; align-items : center;"
-                        method="get" action="{{ route('allusers.pdf') }}">
+                        method="get" target="_blank" action="{{ route('allusers.pdf') }}">
                      
                         <button type="submit" class="btn btn-primary btn-sm float-right"><i
                                 class="material-icons">download</i> Unduh PDF</button>

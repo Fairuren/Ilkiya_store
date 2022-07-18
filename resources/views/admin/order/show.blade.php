@@ -6,7 +6,7 @@
 
     <div style="padding: 40px; padding-top : 70px">
         <div class="card">
-            <h5 class="card-header">Order<a href="{{ route('order.pdf', $order->id) }}"
+            <h5 class="card-header">Order<a target="_blank" href="{{ route('order.pdf', $order->id) }}"
                     class=" btn btn-sm btn-primary shadow-sm float-right"><i class="material-icons">download</i> Unduh
                     Invoice</a>
                 <a target="blank" href="{{ route('get_order_detail.pdf', $order->id) }}"
