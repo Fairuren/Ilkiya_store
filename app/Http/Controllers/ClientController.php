@@ -143,7 +143,7 @@ class ClientController extends Controller
         $data=$request->all();
         // dd($data);
         $check=$this->create($data);
-        Session::put('user',$data['email']);
+        // Session::put('user',$data['email']);
         if($check){
             request()->session()->flash('success','Successfully registered');
             return redirect()->route('home');

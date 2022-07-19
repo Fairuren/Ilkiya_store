@@ -94,6 +94,7 @@ class CartController extends Controller
             'quant'      =>  'required',
         ]);
         // dd($request->quant[1]);
+       
 
 
         $product = Book::where('slug', $request->slug)->first();
