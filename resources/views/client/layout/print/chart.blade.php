@@ -21,7 +21,7 @@
                   <tr>
                     <th class="text-center">No</th>
                     <th class="text-center">Bulan</th>
-                    <th class="text-center">Pendapatan</th>
+                    <th class="text-right">Pendapatan</th>
                  
                   </tr>
                 </thead>
@@ -48,7 +48,7 @@
                       <tr>
                         <td class="text-center">{{$loop->iteration}}</td>
                         <td class="text-center">{{$month[$loop->iteration -1 ]}}</td>
-                        <td class="text-center">Rp. {{number_format($order,2)}}</td>
+                        <td class="text-right">Rp. {{number_format($order,2)}}</td>
                        
                       </tr>  
 
