@@ -40,11 +40,11 @@
                                 <td>Rp. {{ number_format($order->ongkir, 2) }}</td>
                                 <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
                                 <td>
-                                    @if ($order->status == 'new')
+                                    @if ($order->status == 'new' || $order->status == 'received')
                                         <span class="badge badge-primary">{{ $order->status }}</span>
                                     @elseif($order->status == 'process')
                                         <span class="badge badge-warning">{{ $order->status }}</span>
-                                    @elseif($order->status == 'delivered')
+                                    @elseif($order->status == 'delivered' )
                                         <span class="badge badge-success">{{ $order->status }}</span>
                                     @else
                                         <span class="badge badge-danger">{{ $order->status }}</span>

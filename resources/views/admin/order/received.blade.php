@@ -36,6 +36,7 @@
                                     <th>Tanggal Pesan</th>
                                     <th>Tanggal Diterima</th>
                                     <th>Total Harga</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -48,6 +49,7 @@
                                     <th>Tanggal Pesan</th>
                                     <th>Tanggal Diterima</th>
                                     <th>Total Harga</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -71,6 +73,14 @@
                                             {{ $order->updated_at }}
                                         </td>
                                         <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
+                                        <td>
+                                            <a href="{{ route('order.show', $order->id) }}"
+                                                class="btn btn-info btn-sm btn-round btn-just-icon "
+                                                data-toggle="tooltip" title="view" data-placement="bottom"><i
+                                                    class="material-icons">info</i>
+                                            </a>
+
+                                        </td>
 
                                     </tr>
                                 @endforeach

@@ -36,7 +36,7 @@
                                     <th>Jumlah</th>
                                     <th>Ongkir</th>
                                     <th>Total Harga</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -49,7 +49,7 @@
                                     <th>Jumlah</th>
                                     <th>Ongkir</th>
                                     <th>Total Harga</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
