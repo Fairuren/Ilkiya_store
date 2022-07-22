@@ -15,7 +15,13 @@
         <li class="nav-item{{ Request::is('user') == 'dashboard' ? ' active' : '' }}">
           <a class="nav-link" href="{{ route('user') }}">
             <i class="material-icons">money</i>
-              <p>{{ __('Order') }}</p>
+              <p>{{ __('Pemesanan') }}</p>
+          </a>
+        </li>
+        <li class="nav-item{{ Request::is('user/received') == 'dashboard' ? ' active' : '' }}">
+          <a class="nav-link" href="{{ route('user.order.received') }}">
+            <i class="material-icons">check</i>
+              <p>{{ __('Pemesanan Sukses') }}</p>
           </a>
         </li>
         <li class="nav-item{{ Request::is('review') == 'dashboard' ? ' active' : '' }}">

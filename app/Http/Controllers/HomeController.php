@@ -32,6 +32,9 @@ class HomeController extends Controller
     public function index(){
         return view('user-dashboard.layouts.order.index');
     }
+    public function order_received(){
+        return view('user-dashboard.layouts.order.order_received');
+    }
 
     public function profile(){
         $profile=Auth()->user();

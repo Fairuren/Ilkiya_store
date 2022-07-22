@@ -189,6 +189,7 @@ Route::group(['middleware' => 'auth'], function () {
 // User section start
 Route::group(['prefix'=>'/user','middleware'=>['user']],function(){
     Route::get('/',[HomeController::class, 'index'])->name('user');
+    Route::get('/received',[HomeController::class, 'order_received'])->name('user.order.received');
      // Profile
      Route::get('/profile',[HomeController::class, 'profile'])->name('user-profile');
      Route::post('/profile/{id}',[HomeController::class, 'profileUpdate'])->name('user-profile-update');
