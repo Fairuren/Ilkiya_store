@@ -8,28 +8,28 @@
             @include('user-dashboard.layouts.notification')
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Pemesanan</h1>
+                <h1 class="h3 mb-0 text-gray-800">Pemesanan Sukses</h1>
             </div>
             <div class="row">
                 @php
                     $orders = DB::table('orders')
-                        ->where('user_id', auth()->user()->id)->where('status', '!=', 'received')
+                        ->where('user_id', auth()->user()->id)->where('status', 'received')
                         ->paginate(100);
                     
                 @endphp
                 <!-- Order -->
                 <div class="col-xl-12 col-lg-12">
-                    <table class="table table-bordered" id="product-dataTable"  width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="order-dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>S.N.</th>
                                 <th>Order No.</th>
-                                <th class="text-center">Tanggal</th>
+                                <th>Tanggal Diterima</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Pembatalan</th>
+                                {{-- <th>Pembatalan</th> --}}
                                 <th>Jumlah Barang</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Total Harga</th>
                                 <th>Aksi</th>
                             </tr>
@@ -38,12 +38,12 @@
                             <tr>
                                 <th>S.N.</th>
                                 <th>Order No.</th>
-                                <th class="text-center">Tanggal</th>
+                                <th>Tanggal Diterima</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Pembatalan</th>
+                                {{-- <th>Pembatalan</th> --}}
                                 <th>Jumlah Barang</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Total Harga</th>
                                 <th>Aksi</th>
                             </tr>
@@ -54,13 +54,13 @@
                                     <tr>
                                         <td>{{ $order->id }}</td>
                                         <td>{{ $order->order_number }}</td>
-                                        <td>{{ substr($order->created_at, 0 , 10) }}</td>
+                                        <td class="text-center">{{ substr($order->updated_at, 0 , 10) }}</td>
                                         <td>{{ $order->first_name }} {{ $order->last_name }}</td>
                                         <td>{{ $order->email }}</td>
-                                        <td class="text-center">
-                                            {{ $order->cancel_reason ? $order->cancel_reason : '---' }}</td>
+                                        {{-- <td class="text-center">
+                                            {{ $order->cancel_reason ? $order->cancel_reason : '---' }}</td> --}}
                                         <td class="text-center">{{ $order->quantity }}</td>
-                                        <td class="text-center">
+                                        {{-- <td class="text-center">
                                             @if ($order->status == 'new')
                                                 <span class="badge badge-primary">{{ $order->status }}</span>
                                             @elseif($order->status == 'processing')
@@ -74,7 +74,7 @@
                                             @else
                                                 <span class="badge badge-danger">{{ $order->status }}</span>
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         <td>Rp. {{ number_format($order->total_amount, 2) }}</td>
 
                                         <td class="text-center">
@@ -109,7 +109,6 @@
     </div>
 
 @endsection
-
 @push('css')
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
@@ -139,7 +138,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
     <script>
-       $('#product-dataTable').DataTable({
+       $('#order-dataTable').DataTable({
             "ordering": false
         });
         // Sweet alert
