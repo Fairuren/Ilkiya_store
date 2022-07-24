@@ -43,7 +43,7 @@
                  <td >
                   {{-- <a href="{{route('product.edit',$writer->id)}}" class="btn btn-primary btn-sm" style="height:30px; width:20px;" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="material-icons">edit</i></a> --}}
                   <div class="d-flex">
-                    <a href="{{route('product.edit', $writer->id)}}" class="btn btn-warning btn-sm btn-round btn-just-icon">
+                    <a href="{{route('writer.edit', $writer->id)}}" class="btn btn-warning btn-sm btn-round btn-just-icon">
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                     </a>

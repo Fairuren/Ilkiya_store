@@ -75,7 +75,7 @@ class WriterController extends Controller
      */
     public function edit($id)
     {
-        $writer=Writer::get();
+        $writer=Writer::findOrFail($id);
     
         return view('admin.writer.edit')->with('writer',$writer);
     }
@@ -93,7 +93,7 @@ class WriterController extends Controller
          $writer=Writer::findOrFail($id);
          $this->validate($request,[
              'name'=>'string|required',
-                'email'=>'email|required',
+            'email'=>'email|required',
          ]);
          $data= $request->all();
        
