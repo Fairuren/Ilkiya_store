@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Dibatalkan')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Pesanan Sukses')])
 
 @section('content')
     <!-- DataTales Example -->
