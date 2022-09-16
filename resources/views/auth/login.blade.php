@@ -1,0 +1,111 @@
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('')])
+
+@section('content')
+    <div class="container" style="height: auto;">
+        <div class="row align-items-center">
+            <div class="col-md-9 ml-auto mr-auto mb-3 text-center">
+                <h3>{{ __('Selamat datang di Admin ilkiya book store, Silahkan log in ') }} </h3>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+                <form class="form" method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="card card-login card-hidden mb-3">
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
+
+                        </div>
+                        <div class="card-body">
+                            {{-- <p class="card-description text-center">{{ __('Or Sign in with ') }} <strong>Choose Your Role</strong> {{ __(' and the password ') }}<strong>secret</strong> </p> --}}
+                            <div style="margin-top : 40px;"
+                                class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                    </div>
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="{{ __('Email...') }}" value="{{ old('email', '') }}" required>
+                                </div>
+                                @if ($errors->has('email'))
+                                    <div id="email-error" class="error text-danger pl-3" for="email"
+                                        style="display: block;">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="{{ __('Password...') }}" value="" required>
+                                </div>
+                                @if ($errors->has('password'))
+                                    <div id="password-error" class="error text-danger pl-3" for="password"
+                                        style="display: block;">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="bmd-form-group{{ $errors->has('role') ? ' has-danger' : '' }} mt-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">key</i>
+                                        </span>
+                                    </div>
+                                    <select style=" padding : 5px; border-radius : 5px; color : gray; border : none;"
+                                        class="select" name="role" id="role">
+                                        <option value="">-- Pilih Role --</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="su">Super Admin</option>
+                                    </select>
+
+
+                                    @if ($errors->has('role'))
+                                        <div id="role-error" class="error text-danger pl-3" for="role"
+                                            style="display: block;">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="form-check mr-auto ml-3 mt-3">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="remember"
+                                            {{ old('remember') ? 'checked' : '' }}> {{ __('Remember me') }}
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="card-footer justify-content-center">
+                                <button type="submit"
+                                    class="btn btn-primary btn-link btn-lg">{{ __('Lets Go') }}</button>
+                            </div>
+                        </div>
+                </form>
+                <div class="row">
+                    <div class="col-6">
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="text-light">
+                                <small>{{ __('Forgot password?') }}</small>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="{{ route('register') }}" class="text-light">
+                            <small>{{ __('Create new account') }}</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
