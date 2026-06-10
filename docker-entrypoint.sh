@@ -1,6 +1,16 @@
 #!/bin/bash
 set -e
 
+# Ensure .env exists
+if [ ! -f .env ]; then
+    if [ -f .env.example ]; then
+        cp .env.example .env
+    else
+        touch .env
+    fi
+fi
+
+# Update .env with environment variables
 sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST}/" .env
 sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD}/" .env
 
@@ -37,5 +47,9 @@ if [ ! -f storage/app/public/images/laskar-pelangi.jpg ]; then
     done
 fi
 
-php artisan storage:link 2>/dev/null || true
+# Fix storage link: Remove existing (potentially broken Windows symlink) and recreate it
+rm -rf public/storage
+php artisan storage:link
+
+# Start the application
 php artisan serve --host=0.0.0.0 --port=8000
