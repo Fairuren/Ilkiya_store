@@ -24,7 +24,7 @@ class OrderTable extends Migration
             $table->string('last_name')->nullable();
             $table->BigInteger('total_amount');
             $table->integer('quantity');
-            $table->boolead('cod');
+            $table->boolean('cod');
             $table->string('transfer_evidence')->nullable();
             $table->enum('payment_status',['pending', 'paid', 'cancelled']);
             $table->enum("status", ['new', 'processing','delivered','received','cancelled']);

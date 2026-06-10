@@ -21,8 +21,7 @@
                             @if ($product_lists)
 
                                 @foreach ($product_lists as $key => $product)
-                                    <div
-                                        class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item {{ $product->category_id }}">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item {{ $product->category_id }}">
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{ route('product-detail', $product->slug) }}">
@@ -65,12 +64,12 @@
                                                         $after_discount = $product->price - ($product->price * $product->discount) / 100;
                                                     @endphp
                                                     <span>Rp. {{ number_format($after_discount, 2) }}</span>
-                                                    @if($product->discount > 1)
+                                                    @if ($product->discount > 1)
                                                         <del style="padding-left:4%;">Rp.
                                                             {{ number_format($product->price, 2) }}
                                                         </del>
                                                     @endif
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -228,7 +227,7 @@
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
         <script>
             /*==================================================================
-                                                                                                                                                                                                                                                                                                                        [ Isotope ]*/
+                                                                                                                                                                                                                                                                                                                                        [ Isotope ]*/
             var $topeContainer = $('.isotope-grid');
             var $filter = $('.filter-tope-group');
             console.log($filter, $topeContainer);
