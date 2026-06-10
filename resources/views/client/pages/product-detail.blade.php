@@ -545,25 +545,35 @@
 <script type="text/javascript">
     let sites = {!! json_encode($preview->toArray()) !!};
     let curr  = 0;
-    $('#page').html(`Page ${curr + 1}`)
-    $('#preview').html(sites[curr].preview)
+    if (sites.length > 0) {
+        $('#page').html(`Page ${curr + 1}`)
+        $('#preview').html(sites[curr].preview)
+    } else {
+        $('#page').html('Page : 0')
+        $('#preview').html('<h3>Tidak ada preview untuk buku ini.</h3>')
+    }
     $('.c_icon_plus').click(function(){
-        if(curr <=6){
-            curr ++
-            $('#page').html(`Page ${curr + 1}`)
-           return $('#preview').html(sites[curr].preview)
-        }
+        if (sites.length > 0) {
+            if(curr <=6 && curr < sites.length - 1){
+                curr ++
+                $('#page').html(`Page ${curr + 1}`)
+               return $('#preview').html(sites[curr].preview)
+            }
 
-        return $('#preview').html('<div><h3>Maaf Untuk Lanjut Anda harus membeli buku</h3><a href="#addToCart" style="color : white; margin-top : 12px;" class="btn">Beli</a href="."><div>')
+            if (curr >= 6) {
+                return $('#preview').html('<div><h3>Maaf Untuk Lanjut Anda harus membeli buku</h3><a href="#addToCart" style="color : white; margin-top : 12px;" class="btn">Beli</a href="."><div>')
+            }
+        }
     })
 
     $('.c_icon_min').click(function(){
-        if(curr > 0){
-            curr --
-            $('#page').html(`Page ${curr + 1}`)
-           return $('#preview').html(sites[curr].preview)
+        if (sites.length > 0) {
+            if(curr > 0){
+                curr --
+                $('#page').html(`Page ${curr + 1}`)
+               return $('#preview').html(sites[curr].preview)
+            }
         }
-        
     })
 
 </script>

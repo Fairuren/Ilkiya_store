@@ -17,7 +17,11 @@ class UsersTableSeeder extends Seeder
 
         $data = [
             [
-                'name' => 'Admin Admin',
+                'name' => 'Admin',
+                'lastName' => 'Admin',
+                'address' => '-',
+                'phone' => '-',
+                'postalCode' => '-',
                 'email' => 'admin@gmail.com',
                 'role' => "admin",
                 'email_verified_at' => now(),
@@ -26,7 +30,11 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'name' => 'User 001',
+                'name' => 'User',
+                'lastName' => '001',
+                'address' => '-',
+                'phone' => '-',
+                'postalCode' => '-',
                 'email' => 'user@gmail.com',
                 'role' => "user",
                 'email_verified_at' => now(),
@@ -35,7 +43,11 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'name' => 'Super User',
+                'name' => 'Super',
+                'lastName' => 'User',
+                'address' => '-',
+                'phone' => '-',
+                'postalCode' => '-',
                 'email' => 'superuser@gmail.com',
                 'role' => "su",
                 'email_verified_at' => now(),
